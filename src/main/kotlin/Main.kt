@@ -3,13 +3,13 @@ fun main() {
     // Listar todos los videojuegos
     println("Lista de videojuegos:")
     VideojuegosDAO.listarVideojuegos().forEach {
-        println(" - [${it.id}] ${it.titulo} (${it.genero}), stock: ${it.anio} unidades, precio: ${it.nota}€")
+        println(" - [${it.id}] ${it.titulo} (${it.genero}), anio: ${it.anio}, nota: ${it.nota}€")
     }
 
     // Consultar videojuego por ID
     val videojuego = VideojuegosDAO.consultarVideoPorId(3)
     if (videojuego != null) {
-        println("Videojuego encontrado: [${videojuego.id}] ${videojuego.titulo} (${videojuego.genero}), stock: ${videojuego.anio} unidades, precio: ${videojuego.nota}€")
+        println("Videojuego encontrado: [${videojuego.id}] ${videojuego.titulo} (${videojuego.genero}), Año: ${videojuego.anio}, Nota: ${videojuego.nota}€")
     } else {
         println("No se encontró ningun videojuego con ese ID.")
     }
@@ -17,6 +17,7 @@ fun main() {
     // Insertar Videojuego nuevo
     VideojuegosDAO.insertarVideojuego(
         Videojuego(
+            id = 6,
             titulo = "Fortnite",
             genero = "Battle Royale",
             anio = 2019,
@@ -36,7 +37,14 @@ fun main() {
     )
 
 
-    VideojuegosDAO.eliminarVideojuego(5)
+    ListaVideojuegoDAO.anyadirALista(1, 3, "2026-11-22")
+    ListaVideojuegoDAO.anyadirALista(1, 999, "2026-11-22")
+
+
+    VideojuegosDAO.eliminarVideojuego(7)
+
+    ConexionBD.testConnection()
+
 
 
 
