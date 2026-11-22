@@ -3,7 +3,7 @@ import java.sql.SQLException
 
 object VideojuegosDAO {
 
-    fun listarPlantas(): List<Videojuego> {
+    fun listarVideojuegos(): List<Videojuego> {
         val lista = mutableListOf<Videojuego>()
         val sql = "SELECT * FROM videojuegos"
         ConexionBD.getConnection()?.use { conn ->
@@ -53,15 +53,15 @@ object VideojuegosDAO {
                 stmt.setInt(3, videojuego.anio)
                 stmt.setDouble(4, videojuego.nota)
                 if (stmt.executeUpdate() > 0) {
-                    println("${videojuego.titulo} insertada con éxito.")
+                    println("${videojuego.titulo} insertado con éxito.")
                 }
             }
         }
     }
 
-    fun actualizarPlanta(videojuego : Videojuego) {
+    fun actualizarVideojuego(videojuego : Videojuego) {
         if (videojuego.id == null) {
-            println("Error: No se puede actualizar una planta sin ID.")
+            println("Error: No se puede actualizar un videojuego sin ID.")
             return
         }
         val sql = "UPDATE videojuegos SET titulo = ?, genero = ?, anio = ?, nota = ? WHERE id = ?"
@@ -73,9 +73,9 @@ object VideojuegosDAO {
                 stmt.setDouble(4, videojuego.nota)
                 stmt.setInt(5, videojuego.id)
                 if (stmt.executeUpdate() > 0) {
-                    println("Planta con ID ${videojuego.id} actualizada.")
+                    println("Videojuego con ID ${videojuego.id} actualizado.")
                 } else {
-                    println("No se encontró ninguna planta con ID ${videojuego.id} para actualizar.")
+                    println("No se encontró ningun videojuego con ID ${videojuego.id} para actualizar.")
                 }
             }
         }
@@ -87,9 +87,9 @@ object VideojuegosDAO {
             conn.prepareStatement(sql).use { stmt ->
                 stmt.setInt(1, id)
                 if (stmt.executeUpdate() > 0) {
-                    println("Planta con ID $id eliminada.")
+                    println("Videojuego con ID $id eliminado.")
                 } else {
-                    println("No se encontró ninguna planta con ID $id para eliminar.")
+                    println("No se encontró ningun videojuego con ID $id para eliminar.")
                 }
             }
         }
