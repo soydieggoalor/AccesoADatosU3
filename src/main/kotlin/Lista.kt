@@ -1,0 +1,1 @@
+data class Lista(val id: Int? = null, val nombre: String, val idJugador: Int)

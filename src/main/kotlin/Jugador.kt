@@ -1,0 +1,1 @@
+data class Jugador(val id: Int? = null, val nombre: String)

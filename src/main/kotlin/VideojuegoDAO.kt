@@ -1,7 +1,6 @@
 // Fichero: PlantasDAO.kt
-import java.sql.SQLException
 
-object VideojuegosDAO {
+object VideojuegoDAO {
 
     fun listarVideojuegos(): List<Videojuego> {
         val lista = mutableListOf<Videojuego>()
